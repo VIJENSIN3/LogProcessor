@@ -1,19 +1,41 @@
 <div>
-  <h1><p>Submit User Details</p></h1>
-  <form #form="ngForm" (ngSubmit)="AddUser()">
+  <h1>Submit User Details</h1>
+  <form #form="ngForm" (ngSubmit)="AddUser(form)">
     <div class="form-group">
-      <label for="categoryName">Name</label>
-      <input type="text" class="form-control" id="name" aria-describedby="categoryHelp" name="categoryName" placeholder="Enter your name" [(ngModel)]="model.name">
+      <label for="name">Name</label>
+      <input type="text"
+             class="form-control"
+             id="name"
+             name="categoryName"
+             placeholder="Enter your name"
+             [(ngModel)]="model.name"
+             required />
       <small id="categoryHelp" class="form-text text-muted">Enter your name here</small>
+      <!-- Error Message for Name -->
+      <div *ngIf="form.controls.categoryName?.invalid && (form.controls.categoryName?.touched || form.submitted)" class="text-danger">
+        Name is required.
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="urlHandle">Address</label>
-      <input type="text" class="form-control" id="address" name="useraddress" placeholder="Enter your address here" [(ngModel)]="model.address">
+      <label for="address">Address</label>
+      <input type="text"
+             class="form-control"
+             id="address"
+             name="useraddress"
+             placeholder="Enter your address here"
+             [(ngModel)]="model.address"
+             required />
+      <!-- Error Message for Address -->
+      <div *ngIf="form.controls.useraddress?.invalid && (form.controls.useraddress?.touched || form.submitted)" class="text-danger">
+        Address is required.
+      </div>
     </div>
+
     <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
     <br />
   </form>
-</div>
 
-<label *ngIf="result">{{ result }}</label>
+  <label *ngIf="result">{{ result }}</label>
+</div>
