@@ -1,0 +1,36 @@
+<!-- src/app/components/log/log.component.html -->
+<div class="container">
+  <h2>Log File Uploader</h2>
+  <textarea [(ngModel)]="logInput"
+            rows="10"
+            cols="50"
+            placeholder="Paste log data here"></textarea>
+  <button (click)="uploadLog()">Upload Logs</button>
+
+  <div *ngIf="logResults">
+    <h3>Log Statistics</h3>
+    <h4>Accesses per Host:</h4>
+    <table border="1">
+      <tr>
+        <th>Host</th>
+        <th>Access Count</th>
+      </tr>
+      <tr *ngFor="let host of logResults.hostAccessCounts">
+        <td>{{ host.host }}</td>
+        <td>{{ host.accessCount }}</td>
+      </tr>
+    </table>
+
+    <h4>Successful Resource Accesses by URI:</h4>
+    <table border="1">
+      <tr>
+        <th>URI</th>
+        <th>Success Count</th>
+      </tr>
+      <tr *ngFor="let uri of logResults.resourceAccessCounts">
+        <td>{{ uri.uri }}</td>
+        <td>{{ uri.accessCount }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

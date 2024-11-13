@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LogService {
-  private apiUrl = 'https://localhost:7241/api/log'; // API base URL
+  private apiUrl = 'https://localhost:7214/api/log'; // API base URL
 
   constructor(private http: HttpClient) { }
 

@@ -5,20 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LogComponent } from './components/log/log.component';
+import { LogComponent } from '../app/components/logs/log.component';
 import { LogService } from '../services/log.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogComponent // Ensure LogComponent is correctly listed in declarations
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  declarations: [AppComponent, LogComponent],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [LogService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
